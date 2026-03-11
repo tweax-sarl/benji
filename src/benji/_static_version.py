@@ -5,7 +5,7 @@
 # distribution is made.  The magic value "__use_git__" is interpreted by
 # _version.py.
 
-version = "__use_git__"
+version = "0.20.0"
 
 # These values are only set if the distribution was created with 'git archive'
 refnames = "$Format:%D$"
