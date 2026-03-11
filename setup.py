@@ -29,11 +29,11 @@ Environment :: Console
 Intended Audience :: System Administrators
 License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
 Operating System :: POSIX
-Programming Language :: Python :: 3.7
 Programming Language :: Python :: 3.8
 Programming Language :: Python :: 3.9
 Programming Language :: Python :: 3.10
 Programming Language :: Python :: 3.11
+Programming Language :: Python :: 3.12
 Topic :: System :: Archiving :: Backup
 """[:-1].split('\n'),
     keywords='backup',
@@ -50,24 +50,24 @@ Topic :: System :: Archiving :: Backup
     },
     zip_safe=False,  # ONLY because of alembic.ini. The rest is zip-safe.
     install_requires=[
-        'PrettyTable>=0.7.2,<1',
+        'PrettyTable>=0.7.2',
         'sqlalchemy>=2.0.7,<3',
-        'setproctitle>=1.1.8,<2',
-        'python-dateutil>=2.6.0,<3',
+        'setproctitle>=1.1.8',
+        'python-dateutil>=2.6.0',
         'alembic>=1.10.2,<2',
-        'ruamel.yaml>0.16,<0.17',
+        'ruamel.yaml>=0.18',
         'psycopg2-binary>=2.7.4,<3',
-        'argcomplete>=1.9.4,<2',
-        'sparsebitfield>=0.2.5,<1',
+        'argcomplete>=1.9.4',
+        'sparsebitfield>=0.2.5',
         'cerberus>=1.2,<2',
         'pycryptodome>=3.6.1,<4',
-        'pyparsing>=2.3.0,<3',
+        'pyparsing>=2.3.0',
         'semantic_version>=2.8.1,<3',
-        'dateparser>=1.1.1,<2',
+        'dateparser>=1.1.1',
         'structlog>=19.1.0',
-        'colorama>=0.4.1,<1',
+        'colorama>=0.4.1',
         'diskcache>=3.0.6',
-        'attrs >=21.4.0,<22',
+        'attrs>=21.4.0',
     ],
     extras_require={
         's3': ['boto3>=1.15.0'],
@@ -81,7 +81,7 @@ Topic :: System :: Archiving :: Backup
         'helpers': ['blinker>=1.4,<2', 'prometheus_client>=0.7.0,<1'],
         'rest-api': ['bottle>=0.12.16,<0.13.0', 'gunicorn>=20.1.0,<21', 'webargs>=8.0.1,<8.1.0', 'requests>=2.27.1,<3'],
     },
-    python_requires='~=3.6',
+    python_requires='>=3.8',
     entry_points="""
         [console_scripts]
             benji = benji.scripts.benji:main

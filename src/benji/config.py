@@ -8,7 +8,7 @@ from functools import reduce
 from os.path import expanduser
 from typing import List, Callable, Union, Dict, Any, Optional, Sequence
 
-import ruamel.yaml
+from ruamel.yaml import YAML
 import semantic_version
 from cerberus import Validator, SchemaError
 from pkg_resources import resource_filename
@@ -53,7 +53,7 @@ class Config:
         name = cls._schema_name(module, version)
         try:
             with open(file, 'r') as f:
-                schema = ruamel.yaml.load(f, Loader=ruamel.yaml.SafeLoader)
+                schema = YAML(typ='safe').load(f)
             cls._schema_registry[name] = schema
         except FileNotFoundError:
             raise InternalError('Schema {} not found or not accessible.'.format(file))
@@ -144,7 +144,7 @@ class Config:
                 if os.path.isfile(source):
                     try:
                         with open(source, 'r') as f:
-                            config = ruamel.yaml.load(f, Loader=ruamel.yaml.SafeLoader)
+                            config = YAML(typ='safe').load(f)
                     except Exception as exception:
                         raise ConfigurationError('Configuration file {} is invalid.'.format(source)) from exception
                     if config is None:
@@ -155,7 +155,7 @@ class Config:
                 raise ConfigurationError('No configuration file found in the default places ({}).'.format(
                     ', '.join(sources)))
         else:
-            config = ruamel.yaml.load(ad_hoc_config, Loader=ruamel.yaml.SafeLoader)
+            config = YAML(typ='safe').load(ad_hoc_config)
             if config is None:
                 raise ConfigurationError('Configuration string is empty.')
 
